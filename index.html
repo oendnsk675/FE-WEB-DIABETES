@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+      name="author"
+      content="Sayidina ahmadal qososyi & M.Rizki Maulana"
+    />
+    <meta name="keywords" content="svm, support vector machine, python, data mining">
+    <meta
+      name="description"
+      content="a diabetes diagnosis platform, using a support vector machine algorithm to make predictions"
+    />
+    <meta
+      name="og:image"
+      content="./dist/image/og.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="./dist/image/logo.png" type="image/x-icon">
+    <title>Algoritma Genetik</title>
+    <link rel="stylesheet" href="./dist/css/swal.css">
+    <link rel="stylesheet" href="./dist/css/style.css">
+    <link rel="stylesheet" href="./dist/css/custom.css">
+</head>
+<body class="w-full h-screen bg-primary relative font-nunito text-gray-700 font-semibold">
+    
+    <!-- sidebar -->
+    <main class="h-screen smx:h-full smx:mb-20 flex">
+        <aside class="w-[80px] smx:hidden h-screen bg-gradient-to-b p-4 from-secondary via-secondary to-primary flex flex-col items-center">
+
+
+            <!-- logo -->
+            <div class="mt-10 mb-16">
+                <img src="./dist/image/logo.png" class="w-10" alt="logo">
+            </div>
+            <!-- logo -->
+
+            <!-- list of menu -->
+            <div class="flex flex-col gap-6">
+
+                <a href="#" class="p-2 border-2 rounded-lg flex items-center justify-center hover:opacity-40 transition-all duration-300">
+                    <img src="./dist/image/icon/dashboard.png" alt="dashboard icon" class="w-6 h-6">
+                </a>
+
+                <a href="#" class="p-2 rounded-lg flex items-center justify-center hover:opacity-40 transition-all duration-300">
+                    <img src="./dist/image/icon/calender.png" alt="calender icon" class="w-5 h-6">
+                </a>
+
+                <a href="#" class="p-2 rounded-lg flex items-center justify-center hover:opacity-40 transition-all duration-300">
+                    <img src="./dist/image/icon/user.png" alt="user icon" class="w-5 h-6">
+                </a>
+
+                <a href="#" class="p-2 flex items-center justify-center hover:opacity-40 transition-all duration-300">
+                    <img src="./dist/image/icon/logout.png" alt="dashboard icon" class="w-6 h-6">
+                </a>
+                
+            </div>
+            <!-- list of menu -->
+            
+        </aside>
+
+
+        <!-- content -->
+        <div class="p-14 pt-2 smx:px-4 w-full">
+
+            <nav class="w-full flex justify-end px-5 mb-6">
+                <div class="w-10 h-10 border-2 border-white bg-white rounded-full overflow-hidden flex justify-center items-center ">
+                    <img src="https://avatars.dicebear.com/api/big-smile/:seed.svg" class="w-11 h-11" alt="avatar user">
+                </div>
+            </nav>
+            
+            <!-- section line 1 -->
+            <div class="flex smx:flex-col gap-5 items-center mb-5">
+
+                <!-- left -->
+                <div class="w-[58%] smx:w-full text-white p-10 smx:px-4 gradient-2 rounded-xl h-[17rem] smx:h-fit flex">
+                    <!-- greatings -->
+                    <div class="w-[75%]">
+                        <h2 class="text-4xl smx:text-3xl mb-10 font-black">Guten Morgen Cozy</h2>
+    
+                        <p class="text-xl font-thin">
+                            keep healthy, keep spirit, for better performance
+                        </p>
+                    </div>
+                    <!-- /greatings -->
+
+                    <!-- flaticon nurse -->
+                    <div class="w-[50%] smx:hidden relative">
+                        <div class="absolute -top-16 left-20">
+                            <img src="./dist/image/flat-nurse.png" alt="nurse" class="w-[85%]">
+                        </div>
+                    </div>
+                    <!-- /flaticon nurse -->
+
+                </div>
+                <!-- /left -->
+
+                <!-- right -->
+                <div class="w-[39%] smx:w-full p-5 bg-white smx:px-4 rounded-xl h-[17rem]">
+                    <div class="flex justify-between">
+
+                        <!-- left -->
+                        <div>
+
+                            <!-- header info -->
+                            <div class="flex gap-3 mb-1 items-center">
+                                <img src="./dist/image/icon/blood.png" class="w-4 h-5" alt="blood">
+                                <h4 id="header-card-info" class="font-bold text-2xl text-gray-700">Glukosa</h4>
+                            </div>
+                            <!-- /header info -->
+
+                            <h4 class="font-thin mb-4">Pengukuran terakhir</h4>
+                            
+                            <!-- metric -->
+                            <div class="flex mb-4 items-end gap-1">
+                                <h2 class="text-6xl font-bold" id="info-card-param">...</h2>
+                                <h4 class="font-thin mb-1">mol/L</h4>
+                            </div>
+                            <!-- /metric -->
+
+                            <div class="flex items-center">
+                                <h4 class="text-green-400 mb-4 mr-1">Status: </h4>
+                                <h4 id="status-diabet" class="text-green-400 mb-4">looks fine</h4>
+                            </div>
+                            
+                        </div>
+                        <!-- /left -->
+
+                        <!-- right -->
+                        <div class="mt-10">
+                            <p class="">Terakhir check</p>
+                            <p class="text-xl font-bold mt-1 mb-8">1 Jan 23</p>
+
+                            <!-- btn check -->
+                            <button id="btn-check" class="p-1.5 w-24 flex items-center justify-center transition-all duration-300 hover:opacity-40 text-white bg-secondary rounded-full">Check</button>
+                            <!-- /btn check -->
+                        </div>
+                        <!-- right -->
+                        
+                    </div>
+
+                    <!-- parameter setting -->
+                    <div class="w-full relative pr-12 rounded-3xl bg-secondary bg-opacity-50 overflow-hidden">
+                        <!-- list parameter -->
+                        <div id="container-btn-param" class="flex gap-2 w-full p-1 pr-5 relative overflow-x-auto hide-scrollbar">
+                            <!-- parameter -->
+                            <button data-param="btn-toggle-g" class="rounded-full focus:outline-none hover:opacity-70 transition-all duration-300 p-1.5 px-3 min-w-fit bg-primary bg-opacity-80 border border-secondary-2 text-secondary-2">
+                                Glukosa
+                            </button>
+                            
+                            <button data-param="btn-toggle-bp" class="rounded-full focus:outline-none hover:opacity-70 transition-all duration-300 p-1.5 px-3 min-w-fit bg-primary bg-opacity-80 border-secondary-2 text-secondary-2">
+                                Blood Pressure
+                            </button>
+                            
+                            <button data-param="btn-toggle-st" class="rounded-full focus:outline-none hover:opacity-70 transition-all duration-300 p-1.5 px-3 min-w-fit bg-primary bg-opacity-80 text-secondary-2 border-secondary-2">
+                                Skin Thickness
+                            </button>
+                            
+                            <button data-param="btn-toggle-insulin" class="rounded-full focus:outline-none hover:opacity-70 transition-all duration-300 p-1.5 px-3 min-w-fit bg-primary bg-opacity-80 text-secondary-2 border-secondary-2">
+                                Insulin
+                            </button>
+                            
+                            <button data-param="btn-toggle-bmi" class="rounded-full focus:outline-none hover:opacity-70 transition-all duration-300 p-1.5 px-3 min-w-fit bg-primary bg-opacity-80 text-secondary-2 border-secondary-2">
+                                BMI
+                            </button>
+                            
+                            <button data-param="btn-toggle-dpf" class="rounded-full focus:outline-none hover:opacity-70 transition-all duration-300 p-1.5 px-3 min-w-fit bg-primary bg-opacity-80 text-secondary-2 border-secondary-2">
+                                Diabetes Pedigree Function
+                            </button>
+                            
+                            <button data-param="btn-toggle-age" class="rounded-full focus:outline-none hover:opacity-70 transition-all duration-300 p-1.5 px-3 min-w-fit bg-primary bg-opacity-80 text-secondary-2 border-secondary-2">
+                                Age
+                            </button>
+                            <!-- /parameter -->
+                            
+                        </div>
+                        <!-- /list parameter -->
+
+                        <!-- btn setting -->
+                        <div class="absolute flex items-center justify-center top-0 right-0 h-full px-4 bg-[#b5afdf]">
+                            <button id="setting-parameter" class="p-2 group rounded-full bg-secondary">
+                                <img src="./dist/image/icon/setting.png" alt="icon setting" class="group-hover:rotate-180 transform transition-all duration-700">
+                            </button>
+                        </div>
+                        <!-- btn setting -->
+                    </div>
+                    <!-- /parameter setting -->
+                </div>
+                <!-- /right -->
+                
+            </div>
+            <!-- /section line 1 -->
+
+            <!-- section line 2 -->
+            <div class="flex smx:flex-col smx:pb-10 gap-5 items-center">
+
+                <div class="w-[55%] smx:w-full p-10 smx:p-4 bg-white rounded-xl h-64 flex relative overflow-hidden">
+                    <div class="absolute text-white top-0 left-0 bg-black bg-opacity-60 w-full h-full z-40 flex items-center justify-center">
+                        Still Developing
+                    </div>
+                    <canvas id="myChart" aria-label="Hello ARIA World" role="img"></canvas>
+                </div>
+
+                <div class="w-[42%] smx:w-full bg-white rounded-xl h-64 p-6 smx:p-4">
+
+                    <!-- header-card -->
+                    <div class="flex gap-2">
+                        <img src="./dist/image/icon/cart.png" alt="cart">
+                        <span>Nutrisi</span>
+                    </div>
+                    <!-- /header-card -->
+
+                    <div class="w-[65%] text-sm font-normal mt-2 mb-4">
+                        Rekomendasi makanan yang cocok untuk menjaga kesehatan anda
+                    </div>
+
+                    <!-- list nutrisi -->
+                    <div class="flex flex-col gap-3">
+
+                        <!-- item -->
+                        <div class="p-2 text-white bg-opacity-80 flex gap-3 bg-secondary rounded-xl">
+                            <div class="p-1 bg-white rounded-lg w-fit">
+                                <img src="./dist/image/icon/nutrisi/brokoli.png" class="w-[30px]" alt="nutrisi">
+                            </div>
+
+                            <div class="flex flex-col">
+                                <span class="font-normal">Brokoli</span>
+                                <span class="-mt-1 text-xs font-thin">Karbohidrat 7 g</span>
+                            </div>
+                        </div>
+                        <!-- /item -->
+
+                        <!-- item -->
+                        <div class="p-2 text-white bg-opacity-80 flex gap-3 bg-secondary rounded-xl">
+                            <div class="p-1 bg-white rounded-lg w-fit">
+                                <img src="./dist/image/icon/nutrisi/brokoli.png" class="w-[30px]" alt="nutrisi">
+                            </div>
+
+                            <div class="flex flex-col">
+                                <span class="font-normal">Brokoli</span>
+                                <span class="-mt-1 text-xs font-thin">Karbohidrat 7 g</span>
+                            </div>
+                        </div>
+                        <!-- /item -->
+                        
+                    </div>
+                    <!-- /list nutrisi -->
+                    
+                </div>
+                
+            </div>
+            <!-- /section line 2 -->
+            
+        </div>
+        <!-- /content -->
+        
+    </main>
+    <!-- /sidebar -->
+    
+    <script src="./dist/js/jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./dist/js/swal.js"></script>
+    <script src="./dist/js/script.js"></script>
+
+    <script>
+        const ctx = document.getElementById('myChart');
+      
+        new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            datasets: [{
+              label: '# Semua pengukuran glukosa',
+              data: [12, 19, 3, 5, 2, 3],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            },
+            responsive: true,
+            maintainAspectRatio: false
+          }
+        });
+      </script>
+    
+</body>
+</html>
